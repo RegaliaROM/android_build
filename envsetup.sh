@@ -145,7 +145,7 @@ function setpaths()
     # defined in core/config.mk
     targetgccversion=$(get_build_var TARGET_GCC_VERSION)
     targetgccversion2=$(get_build_var 2ND_TARGET_GCC_VERSION)
-    export TARGET_GCC_VERSION=$targetgccversion
+    export TARGET_GCC_VERSION=4.9
 
     # The gcc toolchain does not exists for windows/cygwin. In this case, do not reference it.
     export ANDROID_TOOLCHAIN=
@@ -156,7 +156,7 @@ function setpaths()
             ;;
         x86_64) toolchaindir=x86/x86_64-linux-android-$targetgccversion/bin
             ;;
-        arm) toolchaindir=arm/arm-linux-androideabi-$targetgccversion/bin
+        arm) toolchaindir=arm/arm-linux-androideabi-4.9/bin
             ;;
         arm64) toolchaindir=aarch64/aarch64-linux-android-$targetgccversion/bin;
                toolchaindir2=arm/arm-linux-androideabi-$targetgccversion2/bin
@@ -180,7 +180,7 @@ function setpaths()
     case $ARCH in
         arm)
             # Legacy toolchain configuration used for ARM kernel compilation
-            toolchaindir=arm/arm-eabi-$targetgccversion/bin
+            toolchaindir=arm/arm-eabi-4.9/bin
             if [ -d "$gccprebuiltdir/$toolchaindir" ]; then
                  export ARM_EABI_TOOLCHAIN="$gccprebuiltdir/$toolchaindir"
                  ANDROID_KERNEL_TOOLCHAIN_PATH="$ARM_EABI_TOOLCHAIN":
